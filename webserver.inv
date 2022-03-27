@@ -1,0 +1,2 @@
+[webserver]
+ip-172-31-86-9 ansible_user=ec2-user
