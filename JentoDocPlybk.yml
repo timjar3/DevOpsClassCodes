@@ -2,6 +2,13 @@
 - hosts: webserver
   become: True
   tasks:
+    - name: Install Java 8
+      yum:
+        name: "*"
+        state: latest
+    - name: Installing OpenJDK
+      yum:
+        name: java-1.8.0-openjdk
     - name: Install python pip
       yum:
         name: python-pip
