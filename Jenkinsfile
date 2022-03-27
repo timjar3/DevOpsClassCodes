@@ -4,7 +4,7 @@ pipeline{
         jdk 'Java_Home'
         maven 'myMaven'
     }
-	agent {label 'Slave_nodes'}
+	agent any
       stages{
            stage('Checkout'){
 	    
@@ -58,8 +58,23 @@ pipeline{
                   sh 'mvn package'
               }
           }
-	     
-          
-      }
-}
-
+	   stage('docker build'){
+        steps{
+            sh "docker build -t timjar3/addbook:$BUILD_NUMBER ."
+        }
+    }
+    
+          stage('docker build'){
+		 
+                 steps{
+            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPwd')]) {
+            sh "docker login -u timjar3 -p ${dockerhubPwd}"
+            sh "docker push -t timjar3/addbook:$BUILD_NUMBER ."  
+	    }
+        }
+     }
+  }
+	      
+	
+	      
+	      
