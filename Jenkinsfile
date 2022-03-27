@@ -60,14 +60,14 @@ pipeline{
           }
 	   stage('docker build'){
         steps{
-            sh "docker build -t timjar3/addbook:$BUILD_NUMBER ."
+            sh "sudo docker build -t timjar3/addbook:$BUILD_NUMBER ."
         }
     }
     
           stage('dockerhub_push'){
 		 
                  steps{
-            sh "docker push -t timjar3/addbook:$BUILD_NUMBER ."  
+            sh "sudo docker push -t timjar3/addbook:$BUILD_NUMBER ."  
 	    }
         }
      }
