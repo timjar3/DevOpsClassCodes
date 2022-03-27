@@ -67,8 +67,6 @@ pipeline{
           stage('dockerhub_push'){
 		 
                  steps{
-            withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPwd')]) {
-            sh "docker login -u timjar3 -p ${dockerhubPwd}"
             sh "docker push -t timjar3/addbook:$BUILD_NUMBER ."  
 	    }
         }
