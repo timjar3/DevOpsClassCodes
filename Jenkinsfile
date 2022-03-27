@@ -64,7 +64,7 @@ pipeline{
         }
     }
     
-          stage('docker build'){
+          stage('dockerhub_push'){
 		 
                  steps{
             withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerhubPwd')]) {
