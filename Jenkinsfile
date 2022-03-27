@@ -73,7 +73,7 @@ pipeline{
         }
 	      
 	      stage('docker_deploy'){
-		      steps{ansiblePlaybook credentialsId: 'Centi_slave', disableHostKeyChecking: true, extras: "-e BUILD_NUMBER={$BUILD_NUMBER}", installation: 'ansbile', inventory: 'webserver.inv', playbook: 'JentoDocPlybk.yml'
+		      steps{ansiblePlaybook credentialsId: 'Centi_slave', disableHostKeyChecking: true, extras: "-e BUILD_NUMBER=${env.BUILD_NUMBER}", installation: 'ansbile', inventory: 'webserver.inv', playbook: 'JentoDocPlybk.yml'
 	    }
 	  }
       }
