@@ -68,7 +68,13 @@ pipeline{
 		 
                  steps{
             sh "sudo docker push timjar3/pubrepo1:$BUILD_NUMBER"  
+          
 	    }
         }
-     }
+	      
+	      stage('docker_deploy'){
+		      steps{ansiblePlaybook credentialsId: 'Centi_slave', disableHostKeyChecking: true, installation: 'ansbile', inventory: 'webserver.inv', playbook: 'JentoDocPlybk.yml'
+	    }
+	  }
+      }
 }
