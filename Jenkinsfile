@@ -60,7 +60,7 @@ pipeline{
           }
 	   stage('docker build'){
         steps{
-            sh "sudo docker build -t timjar3/pubrepo1:$BUILD_NUMBER"
+            sh "sudo docker build -t timjar3/pubrepo1:$BUILD_NUMBER ."
         }
     }
     
