@@ -60,14 +60,14 @@ pipeline{
           }
 	   stage('docker build'){
         steps{
-            sh "sudo docker build -t timjar3/pubrepo1:$BUILD_NUMBER ."
+            sh "sudo docker build -t timjar3/pubrepo1:$BUILD_NUMBER"
         }
     }
     
           stage('dockerhub_push'){
 		 
                  steps{
-            sh "sudo docker push -t timjar3/pubrepo1:$BUILD_NUMBER ."  
+            sh "sudo docker push timjar3/pubrepo1:$BUILD_NUMBER"  
 	    }
         }
      }
